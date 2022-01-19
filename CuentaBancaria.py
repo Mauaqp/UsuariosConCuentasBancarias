@@ -42,6 +42,37 @@ class CuentaBancaria:
     
     @classmethod
     def informacion_global(cls):
+        print("*---Info de todas las cuentas---*")
         for cuentas in cls.todas_cuentas:
-            print("*---Info de todas las cuentas---*")
             cuentas.mostrar_info_cuenta()
+
+# Inserción de la clase Usuario
+class Usuarios:
+    lista_usuarios = []
+    cantidad = 0
+    def __init__(self, nombre, apellido, edad, dni,ahorros):
+        self.nombre = nombre
+        self.apellido = apellido
+        self.edad = edad
+        self.dni = dni
+        self.cuenta = CuentaBancaria(0,0.05)
+        Usuarios.cantidad +=1
+        Usuarios.lista_usuarios.append(self)
+    
+    #Métodos de Usuario
+    def deposito(self, amount):
+        self.cuenta.deposito(amount)
+        print("---Depósito---")
+        print("La cuenta de : " + self.nombre +" " + self.apellido + ", tiene : " + str(self.cuenta.balance))
+        return self
+
+    def retiro(self, amount):
+        self.cuenta.retiro(amount)
+        print("---Retiro---")
+        print("La cuenta de : " + self.nombre +" " + self.apellido + ", tiene : " + str(self.cuenta.balance))
+        return self
+    
+    def mostrar_info_cuenta(self):
+        print("---Info de la Cuenta---")
+        print("La cuenta de : " + self.nombre +" " + self.apellido + ", tiene : " + str(self.cuenta.balance))
+        print("La tasa de interés es de: " + str(self.cuenta.tasa_interes))

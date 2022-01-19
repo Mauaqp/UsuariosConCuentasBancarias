@@ -1,4 +1,6 @@
 from CuentaBancaria import CuentaBancaria
+from CuentaBancaria import Usuarios
+
 
 cuenta1 = CuentaBancaria(100, 0.01, "cta001")
 cuenta2 = CuentaBancaria(10, 0.01, "cta002")
@@ -15,3 +17,8 @@ cuenta2.deposito(20).deposito(40).retiro(10).retiro(20).retiro(30).retiro(20).ge
 
 #Bonus
 CuentaBancaria.informacion_global()
+
+# Usuarios
+usuario1 = Usuarios("Alberto", "Escudero", 70, "102345657", "0")
+
+usuario1.deposito(10).deposito(10).retiro(15).mostrar_info_cuenta()
